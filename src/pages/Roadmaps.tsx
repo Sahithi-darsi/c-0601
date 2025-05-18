@@ -1,3 +1,4 @@
+
 import { useState } from "react";
 import { SkillKartNavigation } from "@/components/SkillKartNavigation";
 import Footer from "@/components/landing/Footer";
@@ -119,6 +120,7 @@ export default function Roadmaps() {
       ]
     },
     {
+      id: 4,
       title: "Backend Development",
       description: "Build robust server-side applications and APIs",
       image: "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTB8fHNlcnZlcnxlbnwwfHwwfHx8MA%3D%3D",
@@ -126,9 +128,22 @@ export default function Roadmaps() {
       duration: "14 weeks",
       progress: 0,
       progressColor: "bg-skill-blue",
-      tags: ["Node.js", "Databases", "APIs"]
+      tags: ["Node.js", "Databases", "APIs"],
+      content: [
+        {
+          week: 1,
+          title: "Backend Fundamentals",
+          description: "Understanding server-side programming",
+          resources: [
+            { type: "Video", title: "Intro to Backend Development", url: "#" },
+            { type: "Article", title: "Server Architecture Basics", url: "#" },
+            { type: "Practice", title: "Setting up a Basic Server", url: "#" },
+          ]
+        }
+      ]
     },
     {
+      id: 5,
       title: "Mobile App Development",
       description: "Create native and cross-platform mobile applications",
       image: "https://images.unsplash.com/photo-1601784551446-20c9e07cdbdb?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8bW9iaWxlJTIwYXBwfGVufDB8fDB8fHww",
@@ -136,9 +151,22 @@ export default function Roadmaps() {
       duration: "16 weeks",
       progress: 0,
       progressColor: "bg-skill-green",
-      tags: ["React Native", "Swift", "Kotlin"]
+      tags: ["React Native", "Swift", "Kotlin"],
+      content: [
+        {
+          week: 1,
+          title: "Mobile Development Foundations",
+          description: "Understanding mobile app architecture",
+          resources: [
+            { type: "Video", title: "Mobile Development Overview", url: "#" },
+            { type: "Article", title: "Native vs Cross-Platform", url: "#" },
+            { type: "Practice", title: "Setting up Your Environment", url: "#" },
+          ]
+        }
+      ]
     },
     {
+      id: 6,
       title: "DevOps & Cloud Computing",
       description: "Master deployment, infrastructure, and continuous integration",
       image: "https://images.unsplash.com/photo-1667372393119-3d4c48d07fc9?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8ZGV2b3BzfGVufDB8fDB8fHww",
@@ -146,7 +174,19 @@ export default function Roadmaps() {
       duration: "12 weeks",
       progress: 0,
       progressColor: "bg-skill-purple",
-      tags: ["AWS", "Docker", "CI/CD"]
+      tags: ["AWS", "Docker", "CI/CD"],
+      content: [
+        {
+          week: 1,
+          title: "Introduction to DevOps",
+          description: "Understanding the DevOps philosophy",
+          resources: [
+            { type: "Video", title: "DevOps Fundamentals", url: "#" },
+            { type: "Article", title: "CI/CD Pipeline Basics", url: "#" },
+            { type: "Practice", title: "Setting up GitHub Actions", url: "#" },
+          ]
+        }
+      ]
     }
   ];
 
@@ -183,7 +223,7 @@ export default function Roadmaps() {
                   <RoadmapCard 
                     key={roadmap.id} 
                     {...roadmap} 
-                    onViewRoadmap={() => handleViewRoadmap(roadmap)}
+                    onViewRoadmap={() => handleViewRoadmap(roadmap as RoadmapType)}
                   />
                 ))}
               </div>
