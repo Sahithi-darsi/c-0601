@@ -46,10 +46,9 @@ export function SkillKartNavigation() {
                 <NavigationMenuContent>
                   <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2">
                     <li className="row-span-3">
-                      <NavigationMenuLink asChild>
+                      <Link to="/roadmaps">
                         <a
                           className="flex h-full w-full select-none flex-col justify-end rounded-md bg-skill-purple-light p-6 no-underline outline-none focus:shadow-md"
-                          href="#"
                         >
                           <div className="mb-2 mt-4 text-lg font-medium text-skill-purple">
                             Browse All Roadmaps
@@ -58,46 +57,43 @@ export function SkillKartNavigation() {
                             Explore curated learning paths for various skills and career goals.
                           </p>
                         </a>
-                      </NavigationMenuLink>
+                      </Link>
                     </li>
                     <li>
-                      <NavigationMenuLink asChild>
+                      <Link to="/roadmaps?category=web">
                         <a
                           className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground"
-                          href="#"
                         >
                           <div className="text-sm font-medium leading-none">Web Development</div>
                           <p className="line-clamp-2 text-sm leading-snug text-muted-foreground">
                             Frontend, Backend, and Full Stack paths
                           </p>
                         </a>
-                      </NavigationMenuLink>
+                      </Link>
                     </li>
                     <li>
-                      <NavigationMenuLink asChild>
+                      <Link to="/roadmaps?category=data">
                         <a
                           className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground"
-                          href="#"
                         >
                           <div className="text-sm font-medium leading-none">Data Science</div>
                           <p className="line-clamp-2 text-sm leading-snug text-muted-foreground">
                             Analytics, Machine Learning, and AI
                           </p>
                         </a>
-                      </NavigationMenuLink>
+                      </Link>
                     </li>
                     <li>
-                      <NavigationMenuLink asChild>
+                      <Link to="/roadmaps?category=design">
                         <a
                           className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground"
-                          href="#"
                         >
                           <div className="text-sm font-medium leading-none">Design</div>
                           <p className="line-clamp-2 text-sm leading-snug text-muted-foreground">
                             UI/UX, Graphic Design, and Product Design
                           </p>
                         </a>
-                      </NavigationMenuLink>
+                      </Link>
                     </li>
                   </ul>
                 </NavigationMenuContent>
@@ -107,56 +103,48 @@ export function SkillKartNavigation() {
                 <NavigationMenuContent>
                   <ul className="grid gap-3 p-4 md:w-[400px] md:grid-cols-2">
                     <li>
-                      <NavigationMenuLink asChild>
-                        <a
-                          className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground"
-                          href="#"
-                        >
-                          <div className="text-sm font-medium leading-none">Forums</div>
-                          <p className="line-clamp-2 text-sm leading-snug text-muted-foreground">
-                            Discuss topics with the SkillKart community
-                          </p>
-                        </a>
-                      </NavigationMenuLink>
+                      <a
+                        className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground"
+                        href="#"
+                      >
+                        <div className="text-sm font-medium leading-none">Forums</div>
+                        <p className="line-clamp-2 text-sm leading-snug text-muted-foreground">
+                          Discuss topics with the SkillKart community
+                        </p>
+                      </a>
                     </li>
                     <li>
-                      <NavigationMenuLink asChild>
-                        <a
-                          className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground"
-                          href="#"
-                        >
-                          <div className="text-sm font-medium leading-none">Study Groups</div>
-                          <p className="line-clamp-2 text-sm leading-snug text-muted-foreground">
-                            Join or create learning groups
-                          </p>
-                        </a>
-                      </NavigationMenuLink>
+                      <a
+                        className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground"
+                        href="#"
+                      >
+                        <div className="text-sm font-medium leading-none">Study Groups</div>
+                        <p className="line-clamp-2 text-sm leading-snug text-muted-foreground">
+                          Join or create learning groups
+                        </p>
+                      </a>
                     </li>
                     <li>
-                      <NavigationMenuLink asChild>
-                        <a
-                          className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground"
-                          href="#"
-                        >
-                          <div className="text-sm font-medium leading-none">Mentorship</div>
-                          <p className="line-clamp-2 text-sm leading-snug text-muted-foreground">
-                            Connect with mentors in your field
-                          </p>
-                        </a>
-                      </NavigationMenuLink>
+                      <a
+                        className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground"
+                        href="#"
+                      >
+                        <div className="text-sm font-medium leading-none">Mentorship</div>
+                        <p className="line-clamp-2 text-sm leading-snug text-muted-foreground">
+                          Connect with mentors in your field
+                        </p>
+                      </a>
                     </li>
                     <li>
-                      <NavigationMenuLink asChild>
-                        <a
-                          className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground"
-                          href="#"
-                        >
-                          <div className="text-sm font-medium leading-none">Events</div>
-                          <p className="line-clamp-2 text-sm leading-snug text-muted-foreground">
-                            Workshops, webinars, and meetups
-                          </p>
-                        </a>
-                      </NavigationMenuLink>
+                      <a
+                        className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground"
+                        href="#"
+                      >
+                        <div className="text-sm font-medium leading-none">Events</div>
+                        <p className="line-clamp-2 text-sm leading-snug text-muted-foreground">
+                          Workshops, webinars, and meetups
+                        </p>
+                      </a>
                     </li>
                   </ul>
                 </NavigationMenuContent>
@@ -165,6 +153,13 @@ export function SkillKartNavigation() {
                 <Link to="/resources">
                   <Button variant="ghost" className="text-base group">
                     Resources
+                  </Button>
+                </Link>
+              </NavigationMenuItem>
+              <NavigationMenuItem>
+                <Link to="/dashboard">
+                  <Button variant="ghost" className="text-base group">
+                    Dashboard
                   </Button>
                 </Link>
               </NavigationMenuItem>
@@ -223,17 +218,21 @@ export function SkillKartNavigation() {
       {isOpen && (
         <div className="md:hidden border-t py-4 px-6 bg-background">
           <nav className="flex flex-col gap-4">
-            <Link to="/" className="flex items-center gap-2 py-2 -ml-2 px-2 rounded-md hover:bg-accent">
+            <Link to="/roadmaps" className="flex items-center gap-2 py-2 -ml-2 px-2 rounded-md hover:bg-accent">
               <Compass className="h-5 w-5" /> 
               <span>Explore Roadmaps</span>
             </Link>
-            <Link to="/community" className="flex items-center gap-2 py-2 -ml-2 px-2 rounded-md hover:bg-accent">
+            <Link to="#" className="flex items-center gap-2 py-2 -ml-2 px-2 rounded-md hover:bg-accent">
               <Users className="h-5 w-5" /> 
               <span>Community</span>
             </Link>
             <Link to="/resources" className="flex items-center gap-2 py-2 -ml-2 px-2 rounded-md hover:bg-accent">
               <BookOpen className="h-5 w-5" /> 
               <span>Resources</span>
+            </Link>
+            <Link to="/dashboard" className="flex items-center gap-2 py-2 -ml-2 px-2 rounded-md hover:bg-accent">
+              <BarChart2 className="h-5 w-5" /> 
+              <span>Dashboard</span>
             </Link>
             <div className="border-t my-2"></div>
             <Link to="/login" className="flex items-center gap-2 py-2 -ml-2 px-2 rounded-md hover:bg-accent">

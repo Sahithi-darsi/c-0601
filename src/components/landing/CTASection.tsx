@@ -1,15 +1,17 @@
 
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
+import { useNavigate } from "react-router-dom";
 
 export default function CTASection() {
   const [email, setEmail] = useState("");
+  const navigate = useNavigate();
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     // In a real app, this would handle the signup/newsletter logic
     console.log("Email submitted:", email);
-    window.location.href = "/signup?email=" + encodeURIComponent(email);
+    navigate(`/signup?email=${encodeURIComponent(email)}`);
   };
 
   return (
