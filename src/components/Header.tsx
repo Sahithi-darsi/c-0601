@@ -1,7 +1,19 @@
-import { useState } from "react";
-import { HelpCircle, MessageSquare, BookOpen, GraduationCap, Plus } from "lucide-react";
+
+import { useState, useEffect } from "react";
+import { HelpCircle, MessageSquare, BookOpen, GraduationCap, Plus, User } from "lucide-react";
+import { Link } from "react-router-dom";
+
 const Header = () => {
   const [helpMenuOpen, setHelpMenuOpen] = useState(false);
+  const [currentUser, setCurrentUser] = useState<{ name: string } | null>(null);
+
+  useEffect(() => {
+    const storedUser = localStorage.getItem('currentUser');
+    if (storedUser) {
+      setCurrentUser(JSON.parse(storedUser));
+    }
+  }, []);
+
   return <div className="h-16 flex items-center justify-end px-6 border-b border-gray-800">
       <div className="flex items-center gap-4 relative">
         {/* YouTube icon */}
@@ -51,10 +63,17 @@ const Header = () => {
           Create
         </button>
         
-        {/* Sign In button */}
-        <button className="px-4 py-1.5 text-gray-300 text-sm border border-gray-700 rounded-md hover:bg-gray-800 transition-colors">
-          Sign In
-        </button>
+        {/* Sign In button or User name */}
+        {currentUser ? (
+          <Link to="/dashboard" className="flex items-center gap-2 px-4 py-1.5 text-gray-300 text-sm border border-gray-700 rounded-md hover:bg-gray-800 transition-colors">
+            <User size={16} />
+            {currentUser.name}
+          </Link>
+        ) : (
+          <Link to="/login" className="px-4 py-1.5 text-gray-300 text-sm border border-gray-700 rounded-md hover:bg-gray-800 transition-colors">
+            Sign In
+          </Link>
+        )}
       </div>
     </div>;
 };

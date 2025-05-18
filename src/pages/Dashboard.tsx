@@ -1,5 +1,5 @@
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { SkillKartNavigation } from "@/components/SkillKartNavigation";
 import Footer from "@/components/landing/Footer";
 import { Button } from "@/components/ui/button";
@@ -28,16 +28,24 @@ export default function Dashboard() {
   const { toast } = useToast();
   const [createDialogOpen, setCreateDialogOpen] = useState(false);
   
-  // Mock user data
-  const userData = {
-    name: "Alex Johnson",
+  // User data state
+  const [userData, setUserData] = useState({
+    name: "Guest User",
     joinedDate: "May 2023",
-    learningStreak: 7,
-    completedTopics: 12,
-    enrolledRoadmaps: 3,
-    level: "Intermediate",
+    learningStreak: 0,
+    completedTopics: 0,
+    enrolledRoadmaps: 0,
+    level: "Beginner",
     profileImage: "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=80&h=80&fit=crop&q=80"
-  };
+  });
+
+  // Load user data from localStorage on component mount
+  useEffect(() => {
+    const storedUser = localStorage.getItem('currentUser');
+    if (storedUser) {
+      setUserData(JSON.parse(storedUser));
+    }
+  }, []);
 
   const myRoadmaps = [
     {

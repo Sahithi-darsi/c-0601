@@ -1,5 +1,4 @@
-
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Link, useNavigate, useLocation } from "react-router-dom";
 import { Eye, EyeOff, ArrowLeft, CheckCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -13,6 +12,7 @@ import {
   CardHeader,
   CardTitle 
 } from "@/components/ui/card";
+import { useToast } from "@/components/ui/use-toast";
 
 export default function SignUpPage() {
   const [showPassword, setShowPassword] = useState(false);
@@ -24,20 +24,21 @@ export default function SignUpPage() {
   const [step, setStep] = useState(1);
   const navigate = useNavigate();
   const location = useLocation();
+  const { toast } = useToast();
   
   // Extract email from URL if provided
   const queryParams = new URLSearchParams(location.search);
   const emailFromQuery = queryParams.get("email");
   
   // Use the email from query params if provided
-  useState(() => {
+  useEffect(() => {
     if (emailFromQuery) {
       setFormData(prev => ({
         ...prev,
         email: emailFromQuery
       }));
     }
-  });
+  }, [emailFromQuery]);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
@@ -52,6 +53,25 @@ export default function SignUpPage() {
     
     // In a real app, this would call an API to register the user
     console.log("Sign up form submitted:", formData);
+    
+    // Save user data to localStorage for persistence
+    if (step === 2) {
+      localStorage.setItem('currentUser', JSON.stringify({
+        name: formData.name,
+        email: formData.email,
+        joinedDate: new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long' }),
+        learningStreak: 0,
+        completedTopics: 0,
+        enrolledRoadmaps: 0,
+        level: "Beginner",
+        profileImage: "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=80&h=80&fit=crop&q=80"
+      }));
+      
+      toast({
+        title: "Account created successfully!",
+        description: `Welcome to SkillKart, ${formData.name}!`,
+      });
+    }
     
     // Move to the next step
     if (step === 1) {
