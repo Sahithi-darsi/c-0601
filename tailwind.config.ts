@@ -65,13 +65,17 @@ export default {
         },
         promo: 'hsl(var(--promo))',
         'promo-foreground': 'hsl(var(--promo-foreground))',
-        'blue-card': '#1D8FFF',
-        'yellow-card': '#FFD426',
-        'icon-blue': '#0080FF',
-        'icon-purple': '#B22CFF',
-        'icon-green': '#00A67E',
-        'icon-yellow': '#FFB800',
-        'icon-pink': '#FF3EA5',
+        // SkillKart theme colors
+        'skill-blue': '#0EA5E9',
+        'skill-blue-light': '#D3E4FD',
+        'skill-green': '#10B981',
+        'skill-green-light': '#F2FCE2',
+        'skill-purple': '#9b87f5',
+        'skill-purple-light': '#EAE5FF',
+        'skill-yellow': '#FFC107',
+        'success': '#22c55e',
+        'warning': '#f59e0b',
+        'error': '#ef4444',
       },
       borderRadius: {
         lg: 'var(--radius)',
@@ -102,7 +106,15 @@ export default {
         'slide-out': {
           from: { transform: 'translateX(0)' },
           to: { transform: 'translateX(-100%)' }
-        }
+        },
+        'scale-in': {
+          from: { opacity: '0', transform: 'scale(0.95)' },
+          to: { opacity: '1', transform: 'scale(1)' }
+        },
+        'scale-out': {
+          from: { opacity: '1', transform: 'scale(1)' },
+          to: { opacity: '0', transform: 'scale(0.95)' }
+        },
       },
       animation: {
         'accordion-down': 'accordion-down 0.2s ease-out',
@@ -110,7 +122,9 @@ export default {
         'fade-in': 'fade-in 0.2s ease-out',
         'fade-out': 'fade-out 0.2s ease-out',
         'slide-in': 'slide-in 0.3s ease-out',
-        'slide-out': 'slide-out 0.3s ease-out'
+        'slide-out': 'slide-out 0.3s ease-out',
+        'scale-in': 'scale-in 0.2s ease-out',
+        'scale-out': 'scale-out 0.2s ease-out',
       }
     }
   },
