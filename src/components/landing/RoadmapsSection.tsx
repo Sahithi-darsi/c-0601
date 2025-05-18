@@ -12,6 +12,7 @@ import {
 } from "@/components/ui/card";
 
 type RoadmapCardProps = {
+  id: number;
   title: string;
   description: string;
   image: string;
@@ -23,6 +24,7 @@ type RoadmapCardProps = {
 };
 
 function RoadmapCard({
+  id,
   title,
   description,
   image,
@@ -50,8 +52,8 @@ function RoadmapCard({
           <span className="text-sm text-gray-500">{level}</span>
           <span className="text-sm font-medium">{duration}</span>
         </div>
-        <div className="skill-progress-bar">
-          <div className={`progress ${progressColor}`} style={{width: `${progress}%`}}></div>
+        <div className="h-2 w-full bg-gray-100 rounded-full overflow-hidden">
+          <div className={`h-full ${progressColor}`} style={{width: `${progress}%`}}></div>
         </div>
         <div className="flex items-center gap-2 pt-2 flex-wrap">
           {tags.map((tag, index) => (
@@ -60,7 +62,9 @@ function RoadmapCard({
         </div>
       </CardContent>
       <CardFooter>
-        <Button className="w-full">View Roadmap</Button>
+        <Link to={`/roadmaps?id=${id}`} className="w-full">
+          <Button className="w-full">View Roadmap</Button>
+        </Link>
       </CardFooter>
     </Card>
   );
@@ -69,6 +73,7 @@ function RoadmapCard({
 export default function RoadmapsSection() {
   const roadmaps = [
     {
+      id: 1,
       title: "Frontend Web Development",
       description: "Master modern web development with HTML, CSS, JavaScript, and React",
       image: "https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8cHJvZ3JhbW1pbmd8ZW58MHx8MHx8fDA%3D",
@@ -79,6 +84,7 @@ export default function RoadmapsSection() {
       tags: ["HTML/CSS", "JavaScript", "React"]
     },
     {
+      id: 2,
       title: "Data Science Fundamentals",
       description: "Learn data analysis, visualization, and machine learning basics",
       image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8ZGF0YSUyMHNjaWVuY2V8ZW58MHx8MHx8fDA%3D",
@@ -89,6 +95,7 @@ export default function RoadmapsSection() {
       tags: ["Python", "Statistics", "ML"]
     },
     {
+      id: 3,
       title: "UX/UI Design",
       description: "Create user-centered digital experiences from research to design",
       image: "https://images.unsplash.com/photo-1559028012-481c04fa702d?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8N3x8dWklMjBkZXNpZ258ZW58MHx8MHx8fDA%3D",
@@ -113,8 +120,8 @@ export default function RoadmapsSection() {
           </div>
         </div>
         <div className="mx-auto grid max-w-5xl grid-cols-1 gap-8 py-12 md:grid-cols-2 lg:grid-cols-3">
-          {roadmaps.map((roadmap, index) => (
-            <RoadmapCard key={index} {...roadmap} />
+          {roadmaps.map((roadmap) => (
+            <RoadmapCard key={roadmap.id} {...roadmap} />
           ))}
         </div>
         <div className="flex justify-center">

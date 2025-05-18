@@ -1,6 +1,6 @@
 
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { 
   Search, 
   BookOpen, 
@@ -10,8 +10,8 @@ import {
   Bell, 
   ChevronDown,
   BarChart2,
-  Award,
-  Settings
+  Settings,
+  MessageSquare
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -23,10 +23,26 @@ import {
   NavigationMenuList,
   NavigationMenuTrigger
 } from "@/components/ui/navigation-menu";
+import { 
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger
+} from "@/components/ui/dropdown-menu";
 import { cn } from "@/lib/utils";
+import { useToast } from "@/components/ui/use-toast";
 
 export function SkillKartNavigation() {
   const [isOpen, setIsOpen] = useState(false);
+  const { toast } = useToast();
+  const location = useLocation();
+
+  const handleCommunityClick = (item: string) => {
+    toast({
+      title: "Coming Soon",
+      description: `The ${item} feature will be available soon!`,
+    });
+  };
 
   return (
     <header className="sticky top-0 z-40 w-full border-b bg-background">
@@ -103,62 +119,68 @@ export function SkillKartNavigation() {
                 <NavigationMenuContent>
                   <ul className="grid gap-3 p-4 md:w-[400px] md:grid-cols-2">
                     <li>
-                      <a
-                        className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground"
-                        href="#"
+                      <button
+                        className="block w-full text-left select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground"
+                        onClick={() => handleCommunityClick("Forums")}
                       >
                         <div className="text-sm font-medium leading-none">Forums</div>
                         <p className="line-clamp-2 text-sm leading-snug text-muted-foreground">
                           Discuss topics with the SkillKart community
                         </p>
-                      </a>
+                      </button>
                     </li>
                     <li>
-                      <a
-                        className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground"
-                        href="#"
+                      <button
+                        className="block w-full text-left select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground"
+                        onClick={() => handleCommunityClick("Study Groups")}
                       >
                         <div className="text-sm font-medium leading-none">Study Groups</div>
                         <p className="line-clamp-2 text-sm leading-snug text-muted-foreground">
                           Join or create learning groups
                         </p>
-                      </a>
+                      </button>
                     </li>
                     <li>
-                      <a
-                        className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground"
-                        href="#"
+                      <button
+                        className="block w-full text-left select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground"
+                        onClick={() => handleCommunityClick("Mentorship")}
                       >
                         <div className="text-sm font-medium leading-none">Mentorship</div>
                         <p className="line-clamp-2 text-sm leading-snug text-muted-foreground">
                           Connect with mentors in your field
                         </p>
-                      </a>
+                      </button>
                     </li>
                     <li>
-                      <a
-                        className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground"
-                        href="#"
+                      <button
+                        className="block w-full text-left select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground"
+                        onClick={() => handleCommunityClick("Events")}
                       >
                         <div className="text-sm font-medium leading-none">Events</div>
                         <p className="line-clamp-2 text-sm leading-snug text-muted-foreground">
                           Workshops, webinars, and meetups
                         </p>
-                      </a>
+                      </button>
                     </li>
                   </ul>
                 </NavigationMenuContent>
               </NavigationMenuItem>
               <NavigationMenuItem>
                 <Link to="/resources">
-                  <Button variant="ghost" className="text-base group">
+                  <Button 
+                    variant="ghost" 
+                    className={cn("text-base group", location.pathname === "/resources" && "bg-accent")}
+                  >
                     Resources
                   </Button>
                 </Link>
               </NavigationMenuItem>
               <NavigationMenuItem>
                 <Link to="/dashboard">
-                  <Button variant="ghost" className="text-base group">
+                  <Button 
+                    variant="ghost" 
+                    className={cn("text-base group", location.pathname === "/dashboard" && "bg-accent")}
+                  >
                     Dashboard
                   </Button>
                 </Link>
@@ -178,9 +200,22 @@ export function SkillKartNavigation() {
           </form>
 
           <div className="hidden md:flex items-center gap-4">
-            <Button variant="ghost" size="icon" className="rounded-full">
-              <Bell className="h-5 w-5" />
-            </Button>
+            <DropdownMenu>
+              <DropdownMenuTrigger asChild>
+                <Button variant="ghost" size="icon" className="rounded-full">
+                  <Bell className="h-5 w-5" />
+                </Button>
+              </DropdownMenuTrigger>
+              <DropdownMenuContent align="end" className="w-[300px]">
+                <div className="flex items-center justify-between p-2 border-b">
+                  <p className="font-semibold">Notifications</p>
+                  <Button variant="ghost" size="sm">Mark all as read</Button>
+                </div>
+                <div className="py-2 text-center text-sm text-gray-500">
+                  No notifications yet
+                </div>
+              </DropdownMenuContent>
+            </DropdownMenu>
             
             <Link to="/login">
               <Button variant="outline">Log in</Button>
@@ -222,10 +257,13 @@ export function SkillKartNavigation() {
               <Compass className="h-5 w-5" /> 
               <span>Explore Roadmaps</span>
             </Link>
-            <Link to="#" className="flex items-center gap-2 py-2 -ml-2 px-2 rounded-md hover:bg-accent">
+            <button 
+              className="flex items-center gap-2 py-2 -ml-2 px-2 rounded-md hover:bg-accent text-left"
+              onClick={() => handleCommunityClick("Community")}
+            >
               <Users className="h-5 w-5" /> 
               <span>Community</span>
-            </Link>
+            </button>
             <Link to="/resources" className="flex items-center gap-2 py-2 -ml-2 px-2 rounded-md hover:bg-accent">
               <BookOpen className="h-5 w-5" /> 
               <span>Resources</span>
